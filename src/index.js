@@ -86,6 +86,10 @@ class Game extends React.Component {
         })
     }
 
+    negrito(step) {
+
+    }
+
 
     render() {
         const history = this.state.history
@@ -98,8 +102,26 @@ class Game extends React.Component {
             const desc = move ? `Go to Move #${move}` : 'Go to Start';
 
             return (
-                <li key={move}>
-                    <button onClick={() => this.jumpTo(move)}>{desc}</button>
+                <li key={move} id={move}>
+                    <button onClick={() => {
+                       const limpClass = document.getElementsByClassName('negrito') 
+/*                        console.log(limpClass)
+                       if(limpClass === undefined) {
+                           return;
+                       } else {limpClass.classList.remove('negrito')}  */
+
+                        const liClassAd = document.getElementById(move)
+                        liClassAd.classList.add('negrito')
+                        
+                        this.jumpTo(move)
+                    }}
+                        
+                        
+                        
+                    >
+
+
+                    {desc}</button>
                 </li>
             )
         })
@@ -154,3 +176,4 @@ ReactDOM.render(
     <Game />,
     document.getElementById('root')
 );
+
